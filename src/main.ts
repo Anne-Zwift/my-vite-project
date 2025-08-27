@@ -23,3 +23,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
 setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
 
+// Add types to the variables below: Exercise
+let courseName: string = 'Front-End Development';
+let lessonCount: number = 10;
+let isCourseActive: boolean = true;
+let topics: string[] = ['HTML', 'CSS', 'JavaScript'];
+
+// This should work after you've added the types
+console.log(courseName, lessonCount, isCourseActive, topics);

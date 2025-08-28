@@ -54,11 +54,11 @@ function isEligibleForPromo(user: {
     }
 }
 
-const user = {age: 25, hasSubscribed: true };
+/*const user = {age: 25, hasSubscribed: true };
 const eligible = isEligibleForPromo(user);
 
 console.log(isEligibleForPromo);
-console.log(user);
+console.log(user);*/
 
 function displayError(message: string): void {
   const errorElement = document.getElementById('error-container');
@@ -70,3 +70,40 @@ function displayError(message: string): void {
 }
 
 displayError('Invalid username or password');
+
+// Function 1: add types to parameters and a return type
+
+function multiply(a: number, b: number):number {
+  return a * b;
+}
+multiply(5, 2);
+console.log(multiply(5, 2));
+
+// Function 2: add a type for the 'user' parameter and return type
+
+function formatUser(user: {
+  firstName: string;
+  lastName: string;
+}): boolean {
+  if (user.firstName == "Anne" && user.lastName == "Zwift") {
+    return true;
+    } else {
+      return false;
+    }
+}
+
+const user = {firstName: "Anne", lastName: "Zwift"};
+const newUser = formatUser(user);
+
+//console.log(formatUser);
+console.log(user);
+
+// Function 3: Add a type for the 'message' parameter and a return type
+
+
+function logMessage(message: string): void {
+  console.log(message);
+  // There is no 'return' statement.
+}
+
+logMessage('This is a notification.');

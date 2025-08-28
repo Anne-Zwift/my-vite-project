@@ -43,6 +43,14 @@ h1 {
   text-align: center;
 }
 
+#error-container {
+  text-align: center;
+  width: 200px;
+  margin-left: 20px;
+  padding: 10px;
+  background-color: rgb(150, 150, 255);
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

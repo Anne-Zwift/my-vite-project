@@ -12,6 +12,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
     </a>
     <h1>Hello, Vite!</h1>
+    <input id="error-container" placeholder="Invalid username or password">
     <div class="card">
       <button id="counter" type="button"></button>
     </div>
@@ -31,3 +32,41 @@ let topics: string[] = ['HTML', 'CSS', 'JavaScript'];
 
 // This should work after you've added the types
 console.log(courseName, lessonCount, isCourseActive, topics);
+
+// TypeScript - errors are caught at compile time
+function add(a: number, b: number) {
+  return a + b;
+}
+
+add(5, 10); // Works as expected, returns 15.
+// add(5, '10'); // Error: Argument of type 'string' is not assignable to parameter of type 'number'.
+
+console.log(add(5, 10));
+
+function isEligibleForPromo(user: {
+  age: number;
+  hasSubscribed: boolean;
+}): boolean {
+  if (user.age > 21 && user.hasSubscribed) {
+    return true;
+    } else {
+      return false;
+    }
+}
+
+const user = {age: 25, hasSubscribed: true };
+const eligible = isEligibleForPromo(user);
+
+console.log(isEligibleForPromo);
+console.log(user);
+
+function displayError(message: string): void {
+  const errorElement = document.getElementById('error-container');
+    if(errorElement){
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+    }
+  
+}
+
+displayError('Invalid username or password');

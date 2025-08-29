@@ -128,3 +128,29 @@ processInput("This is a string");
 processInput([24 + 25]);
 processInput([1, 2, 3]);
 
+// Define two types:
+
+//Product: with properties id (number) and name (string).
+
+//StockInfo: with properties quantity (number) and warehouse (string).
+
+type Product = {
+  id: number;
+  name: string;
+}
+
+type StockInfo = {
+  quantity: number;
+  warehouse: string;
+}
+
+type CombinedProduct = Product & StockInfo;
+
+const newProduct: CombinedProduct = {
+  name: 'Brilliant',
+  id: 26,
+  quantity: 100,
+  warehouse: 'Oslo',
+}
+
+console.log(newProduct);

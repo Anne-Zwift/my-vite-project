@@ -107,3 +107,24 @@ function logMessage(message: string): void {
 }
 
 logMessage('This is a notification.');
+
+
+// unions and intersection types
+// Create a function named processInput. 
+// This function should accept one parameter that can be either a string or an array of numbers (i.e., number[]).
+
+function processInput(input: string | number[]) {
+  if (typeof input === 'string') {
+    console.log(`Input is a string: "${input.toLocaleUpperCase()}"`);
+    console.log(`Length: ${input.length}`);
+  } else{
+    const sum = input.reduce((total, current) => total + current, 0);
+    console.log(`Input is an array of number: [${input.join(', ')}]`);
+    console.log(`Sum: ${sum}`);
+  }
+}
+
+processInput("This is a string");
+processInput([24 + 25]);
+processInput([1, 2, 3]);
+

@@ -170,3 +170,42 @@ console.log(myInventoryItem);
 console.log(`Item Name: ${myInventoryItem.name}`);
 console.log(`Quantity: ${myInventoryItem.quantity}`);
 
+//  create aliases for a simple union and an object shape
+
+type ID = string | number;
+
+// an alias for an object shape
+
+type Point = {
+  x: number;
+  y: number;
+};
+
+let userId: ID = 'abc-123';
+let mapCoordinate: Point = {x: 10, y: 20};
+
+console.log(userId.toLocaleUpperCase());
+console.log(mapCoordinate);
+
+//  create a User type alias. 
+// This makes our function signatures much cleaner and more descriptive
+
+type User = {
+  id: string | number;
+  username: string;
+  isPremium: boolean;
+};
+
+// Use the alias function in a function signature
+
+function greetUser(user: User): string {
+  return `Hello, ${user.username}! Welcome back.`;
+}
+
+const currentUser: User = {
+  id: 101,
+  username: 'dev_jane',
+  isPremium: true,
+};
+
+console.log(greetUser(currentUser));

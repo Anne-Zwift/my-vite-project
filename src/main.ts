@@ -154,3 +154,19 @@ const newProduct: CombinedProduct = {
 }
 
 console.log(newProduct);
+
+//Create an intersection type named InventoryItem that combines the Product and StockInfo types.
+
+type InventoryItem = Product & StockInfo;
+
+const myInventoryItem: InventoryItem = {
+  id: 22,
+  name: "Coffee table",
+  quantity: 3,
+  warehouse: 'vest-side',
+};
+
+console.log(myInventoryItem);
+console.log(`Item Name: ${myInventoryItem.name}`);
+console.log(`Quantity: ${myInventoryItem.quantity}`);
+

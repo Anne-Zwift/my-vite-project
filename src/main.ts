@@ -190,15 +190,15 @@ console.log(mapCoordinate);
 //  create a User type alias. 
 // This makes our function signatures much cleaner and more descriptive
 
-type User = {
+/*type User = {
   id: string | number;
   username: string;
   isPremium: boolean;
-};
+};*/
 
 // Use the alias function in a function signature
 
-function greetUser(user: User): string {
+/*function greetUser(user: User): string {
   return `Hello, ${user.username}! Welcome back.`;
 }
 
@@ -208,4 +208,34 @@ const currentUser: User = {
   isPremium: true,
 };
 
-console.log(greetUser(currentUser));
+console.log(greetUser(currentUser));*/
+
+// Interfaces with interface
+
+interface Points {
+  x: number;
+  y: number;
+}
+
+let mapCoordinates: Points = { x: 10, y: 20};
+console.log(mapCoordinates);
+
+interface User {
+  id: number;
+  username: string;
+  isPremium: boolean;
+}
+
+// Create a variable 'newUsers' that conforms to the 'User' interface.
+const newUsers: User = {
+  id: 102,
+  username: 'dev_Nick',
+  isPremium: true,
+}
+
+function greetUser(user: User): string {
+  // Inside the function, use the parameter name 'user' to access its properties.
+  return `Hello, ${user.username}! Welcome back.`;
+}
+
+console.log(greetUser(newUsers));

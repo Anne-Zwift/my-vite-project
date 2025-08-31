@@ -43,7 +43,7 @@ add(5, 10); // Works as expected, returns 15.
 
 console.log(add(5, 10));
 
-function isEligibleForPromo(user: {
+/*function isEligibleForPromo(user: {
   age: number;
   hasSubscribed: boolean;
 }): boolean {
@@ -53,7 +53,7 @@ function isEligibleForPromo(user: {
       return false;
     }
 }
-
+*/
 /*const user = {age: 25, hasSubscribed: true };
 const eligible = isEligibleForPromo(user);
 
@@ -81,7 +81,7 @@ console.log(multiply(5, 2));
 
 // Function 2: add a type for the 'user' parameter and return type
 
-function formatUser(user: {
+/*function formatUser(user: {
   firstName: string;
   lastName: string;
 }): boolean {
@@ -90,13 +90,13 @@ function formatUser(user: {
     } else {
       return false;
     }
-}
+}*/
 
-const user = {firstName: "Anne", lastName: "Zwift"};
+/*const user = {firstName: "Anne", lastName: "Zwift"};
 const newUser = formatUser(user);
 
 //console.log(formatUser);
-console.log(user);
+console.log(user);*/
 
 // Function 3: Add a type for the 'message' parameter and a return type
 
@@ -300,3 +300,30 @@ const myRequest: ApiRequest = {
 // ...and then call the function with its properties.
 console.log(createRequestMessage(myRequest.url, myRequest.method));
 console.log(createRequestMessage("/users", "GET"));
+
+
+// Create a function named makeRequest that takes one parameter of type ApiRequest
+//  and logs a message like "Making a GET request to https://example.com".
+
+function makeRequest(request: ApiRequest) {
+  // access the properties directly from the single 'request' object.
+  console.log(`Making a ${request.method} request to ${request.url}`);
+}
+
+// Now we can create a variable of the ApiRequest type...
+const myApiRequest: ApiRequest = {
+  url: "https://example.com",
+  method: "GET"
+};
+
+// ...and pass the entire object to the function.
+makeRequest(myApiRequest);
+
+// Create another valid ApiRequest object.
+const anotherApiRequest: ApiRequest = {
+  url: "https://example.com/items/5",
+  method: "GET"
+};
+
+// Pass the new object to the function.
+makeRequest(anotherApiRequest);

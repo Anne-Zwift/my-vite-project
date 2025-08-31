@@ -327,3 +327,31 @@ const anotherApiRequest: ApiRequest = {
 
 // Pass the new object to the function.
 makeRequest(anotherApiRequest);
+
+
+
+//Create an interface named Vehicle 
+// with the following properties: make (string) and model (string).
+
+interface Vehicle {
+  make: string;
+  model: string;
+}
+
+// Create another interface named Car that extends the Vehicle interface. 
+// It should add a new property: numberOfDoors (number).
+
+interface Car extends Vehicle {
+  numberOfDoors: number;
+}
+
+// Create a variable of type Car and assign it a valid object with all the required properties.
+
+const myCar: Car = {
+  make: "BMW",
+  model: "Tiger",
+  numberOfDoors: 4,
+};
+
+//Log your Car object to the console.
+console.log(myCar);

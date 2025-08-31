@@ -212,7 +212,7 @@ console.log(greetUser(currentUser));*/
 
 // Interfaces with interface
 
-interface Points {
+/*interface Points {
   x: number;
   y: number;
 }
@@ -238,4 +238,65 @@ function greetUser(user: User): string {
   return `Hello, ${user.username}! Welcome back.`;
 }
 
-console.log(greetUser(newUsers));
+console.log(greetUser(newUsers));*/
+
+// Exercise type alias
+
+// Create a type alias named HttpVerbs 
+// that is a union of the following string literals: "GET", "POST", "PUT", "DELETE".
+
+/**
+ * Defines a type alias named HttpVerbs.
+ * It is a union of the specific string literals "GET", "POST", "PUT", and "DELETE".
+ * A variable of this type can only be one of these four values.
+ */
+//type HttpVerbs = "GET" | "POST" | "PUT" | "DELETE";
+
+/**
+ * A function that handles a web request. The 'method' parameter is typed as HttpVerbs,
+ * which ensures that only the allowed string literals can be used.
+ * @param url The URL for the request.
+ * @param method The HTTP verb for the request.
+ */
+
+/*function handleRequest(url: string, method: HttpVerbs) {
+  console.log(`Handling a ${method} request to ${url}.`);
+}
+
+handleRequest("/users", "GET");*/
+
+
+//Create a type alias named ApiRequest for an object. 
+// The object should have two properties: url (of type string) and method (of type HttpVerbs).
+
+
+/**
+ * Defines a type alias for a union of specific string literals
+ * representing valid HTTP verbs.
+ */
+type HttpVerbs = "GET" | "POST" | "PUT" | "DELETE";
+
+/**
+ * Defines a type alias for the shape of an API request object.
+ * It requires a url (string) and a method (HttpVerbs).
+ */
+type ApiRequest = {
+  url: string;
+  method: HttpVerbs;
+};
+
+function createRequestMessage(url: string, method: HttpVerbs): string {
+  // use the function parameters directly
+  return `This is my url ${url} using ${method}.`;
+  
+}
+
+// create an object that conforms to the ApiRequest type...
+const myRequest: ApiRequest = {
+  url: "users/123",
+  method: "GET"
+};
+
+// ...and then call the function with its properties.
+console.log(createRequestMessage(myRequest.url, myRequest.method));
+console.log(createRequestMessage("/users", "GET"));

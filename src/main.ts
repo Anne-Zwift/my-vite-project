@@ -355,3 +355,55 @@ const myCar: Car = {
 
 //Log your Car object to the console.
 console.log(myCar);
+
+
+
+// Creating a Generic Function
+
+function getFirstNumber(items:number[]): number {
+  return items[0];
+}
+
+function getFirstString(items:string[]): string {
+  return items[0];
+}
+
+// using any
+// We lose all type safety. We can't use number or string methods on firstItem without a risk of runtime errors.
+
+function getFirstElementAny(items:any[]): any {
+  return items[0];
+}
+
+const firstItem = getFirstElementAny([1, 'a', true]);
+
+//Here is a generic function that solves our problem.
+
+function getFirstElement<T>(items:T[]): T {
+  return items[0];
+}
+
+const numbers = [10, 20, 30];
+const firstNumber = getFirstElement(numbers);
+
+const strings = ['apple', 'banana', 'cherry'];
+const firstString = getFirstElement(strings);
+
+console.log(strings);
+
+
+//create a function that takes some data 
+// and returns it in a standardized object format.
+
+function createDataResponse<T>(data: T): {success: boolean; data: T } {
+  return {
+    success: true,
+    data: data,
+  };
+}
+
+const user = { name: 'Alice', id: 1};
+const userResponse = createDataResponse(user);
+
+console.log(user);
+console.log(userResponse);

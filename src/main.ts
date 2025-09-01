@@ -428,3 +428,45 @@ function logLength<T extends WithLength>(arg:T):void {
 
 logLength('Hello, world!');
 
+
+// A generic interface for API responses
+
+interface ApiResponse<DataType> {
+  data: DataType;
+  meta: {
+    requestTime: number;
+    source: string;
+  };
+}
+
+// Specific types for application data
+
+interface User {
+  id: number;
+  name: string;
+}
+
+interface Product {
+  sku: string;
+  price: number;
+}
+
+// Now we can reuse our ApiResponse for different endpoints.
+
+const userResponse: ApiResponse<User> = {
+  data: {
+    id: 1,
+    name: 'Alice',
+  },
+};
+
+const productListResponse: ApiResponse<Product[]> = {
+  data: [
+    {sku: 'LPT-01', price: 1200},
+    {sku: 'MOU-02', price: 50},
+  ],
+  meta: {
+    requestTime: 80,
+    source: 'inventory-api',
+  },
+};

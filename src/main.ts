@@ -496,3 +496,25 @@ processResponse(userResponse);
 // Calling the function with a product list response
 console.log('\n--- Calling with Product List Response ---');
 processResponse(productListResponse);
+
+
+// task 1: generic function
+/**
+ * A generic function that reverses the order of elements in an array.
+ * @param items The array of elements to reverse.
+ * @returns A new array with the elements in reverse order.
+ */
+
+function reverseArray<T>(items: T[]): T[] {
+  return [...items].reverse();
+}
+
+const numbers = [1, 2, 3, 4, 5];
+const reverseNumbers = reverseArray(numbers);
+console.log('Original numbers array', numbers);
+console.log('Reversed numbers array', reverseNumbers);
+
+const strings = ['apple', 'banana', 'watermelon'];
+console.log('Original strings', strings);
+const reveredStrings = reverseArray(strings);
+console.log('Reversed strings', reveredStrings);

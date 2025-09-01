@@ -518,3 +518,28 @@ const strings = ['apple', 'banana', 'watermelon'];
 console.log('Original strings', strings);
 const reveredStrings = reverseArray(strings);
 console.log('Reversed strings', reveredStrings);
+
+
+// task 2: Create a generic interface named Collection.
+
+interface Collection<T> {
+  name: string;
+  items: T[];  
+}
+
+type Movie = {
+  title: string;
+  year: number;
+}
+
+const movieCollection: Collection<Movie> = {
+  name: 'My favorite movies',
+  items: [
+    { title: 'Alice in Wonderland', year: 1990 },
+    { title: 'What I learned of an Octopus', year: 2000 },
+    { title: 'The man who knew Infinity', year: 2010 },
+  ],
+
+};
+
+console.log(movieCollection);

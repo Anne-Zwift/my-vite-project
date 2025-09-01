@@ -412,3 +412,19 @@ const products = ['Laptop', 'Mouse'];
 const productResponse = createDataResponse(products);
 
 console.log(productResponse);
+
+
+
+// Generic Constraints, using extends
+//constrain T to be any type that has a 'length' property of type 'number'
+
+interface WithLength {
+  length: number;
+}
+
+function logLength<T extends WithLength>(arg:T):void {
+  console.log(`Length is: ${arg.length}`);
+}
+
+logLength('Hello, world!');
+

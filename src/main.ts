@@ -274,65 +274,65 @@ handleRequest("/users", "GET");*/
  * Defines a type alias for a union of specific string literals
  * representing valid HTTP verbs.
  */
-type HttpVerbs = "GET" | "POST" | "PUT" | "DELETE";
+//type HttpVerbs = "GET" | "POST" | "PUT" | "DELETE";
 
 /**
  * Defines a type alias for the shape of an API request object.
  * It requires a url (string) and a method (HttpVerbs).
  */
-type ApiRequest = {
+/*type ApiRequest = {
   url: string;
   method: HttpVerbs;
-};
+};*/
 
-function createRequestMessage(url: string, method: HttpVerbs): string {
+/*function createRequestMessage(url: string, method: HttpVerbs): string {
   // use the function parameters directly
   return `This is my url ${url} using ${method}.`;
   
-}
+}*/
 
 // create an object that conforms to the ApiRequest type...
-const myRequest: ApiRequest = {
+/*const myRequest: ApiRequest = {
   url: "users/123",
   method: "GET"
-};
+};*/
 
 // ...and then call the function with its properties.
-console.log(createRequestMessage(myRequest.url, myRequest.method));
-console.log(createRequestMessage("/users", "GET"));
+/*console.log(createRequestMessage(myRequest.url, myRequest.method));
+console.log(createRequestMessage("/users", "GET"));*/
 
 
 // Create a function named makeRequest that takes one parameter of type ApiRequest
 //  and logs a message like "Making a GET request to https://example.com".
 
-function makeRequest(request: ApiRequest) {
+/*function makeRequest(request: ApiRequest) {
   // access the properties directly from the single 'request' object.
   console.log(`Making a ${request.method} request to ${request.url}`);
-}
+}*/
 
 // Now we can create a variable of the ApiRequest type...
-const myApiRequest: ApiRequest = {
+/*const myApiRequest: ApiRequest = {
   url: "https://example.com",
   method: "GET"
-};
+};*/
 
 // ...and pass the entire object to the function.
-makeRequest(myApiRequest);
+//makeRequest(myApiRequest);
 
 // Create another valid ApiRequest object.
-const anotherApiRequest: ApiRequest = {
+/*const anotherApiRequest: ApiRequest = {
   url: "https://example.com/items/5",
   method: "GET"
-};
+};*/
 
 // Pass the new object to the function.
-makeRequest(anotherApiRequest);
+//makeRequest(anotherApiRequest);
 
 
 
 //Create an interface named Vehicle 
 // with the following properties: make (string) and model (string).
-
+/*
 interface Vehicle {
   make: string;
   model: string;
@@ -426,7 +426,7 @@ function logLength<T extends WithLength>(arg:T):void {
   console.log(`Length is: ${arg.length}`);
 }
 
-logLength('Hello, world!');
+logLength('Hello, world!');*/
 
 
 // A generic interface for API responses
@@ -451,12 +451,30 @@ interface Product {
   price: number;
 }
 
+
+// Reusable generic function that accepts any ApiResponse
+function processResponse<T>(response: ApiResponse<T>) {
+  console.log(`Processing response from ${response.meta.source}`);
+  console.log(`Request time: ${response.meta.requestTime}ms`);
+  console.log('Received data:', response.data);
+
+  // You can even add logic that depends on the data type
+  if (Array.isArray(response.data)) {
+    console.log(`This is a list with ${response.data.length} items.`);
+  }
+}
+
+
 // Now we can reuse our ApiResponse for different endpoints.
 
 const userResponse: ApiResponse<User> = {
   data: {
     id: 1,
     name: 'Alice',
+  },
+  meta: {
+    requestTime: 55,
+    source: 'user-api',
   },
 };
 
@@ -470,3 +488,11 @@ const productListResponse: ApiResponse<Product[]> = {
     source: 'inventory-api',
   },
 };
+
+// Calling the function with a user response
+console.log('--- Calling with User Response ---');
+processResponse(userResponse);
+
+// Calling the function with a product list response
+console.log('\n--- Calling with Product List Response ---');
+processResponse(productListResponse);

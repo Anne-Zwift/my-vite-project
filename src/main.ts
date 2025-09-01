@@ -407,3 +407,8 @@ const userResponse = createDataResponse(user);
 
 console.log(user);
 console.log(userResponse);
+
+const products = ['Laptop', 'Mouse'];
+const productResponse = createDataResponse(products);
+
+console.log(productResponse);

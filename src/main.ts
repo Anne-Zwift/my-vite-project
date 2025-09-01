@@ -543,3 +543,34 @@ const movieCollection: Collection<Movie> = {
 };
 
 console.log(movieCollection);
+
+//Enums: Giving Names to Sets of Values
+//Numeric Enums
+enum Direction {
+  Up, // 0
+  Down, // 1
+  Left, // 2
+  Right, // 3
+}
+
+let playerDirection: Direction = Direction.Down;
+
+if (playerDirection === Direction.Down) {
+  console.log('Player is moving down.'); // This will be logged.
+}
+
+console.log(playerDirection); // Logs: 1
+
+//String Enums
+enum LogLevel {
+  Info = 'INFO',
+  Warning = 'WARNING',
+  Error = 'ERROR',
+}
+
+function logMessages(message: string, level: LogLevel) {
+  console.log(`[${level}] - ${message}`);
+}
+
+logMessages('User logged in successfully.', LogLevel.Info);
+logMessages('API key is about to expire.', LogLevel.Warning);

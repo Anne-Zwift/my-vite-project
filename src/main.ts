@@ -546,7 +546,7 @@ console.log(movieCollection);
 
 //Enums: Giving Names to Sets of Values
 //Numeric Enums
-enum Direction {
+/*enum Direction {
   Up, // 0
   Down, // 1
   Left, // 2
@@ -573,4 +573,88 @@ function logMessages(message: string, level: LogLevel) {
 }
 
 logMessages('User logged in successfully.', LogLevel.Info);
-logMessages('API key is about to expire.', LogLevel.Warning);
+logMessages('API key is about to expire.', LogLevel.Warning);*/
+
+
+// Tuples
+
+/*let userProfile: [string, number];
+
+// A valid assignment:
+userProfile = ['Alice', 30];
+
+// An invalid assignment (wrong order):
+userProfile = [30, 'Alice'];
+
+// An invalid assignment (wrong number of elements):
+userProfile = ['Alice'];*/
+
+
+
+// creating and using both enums and tuples
+
+
+// Enum
+// Create a string enum named PaymentStatus. 
+// It should have the following members: Pending, Paid, Failed, and Refunded. 
+// Make sure to initialize them with appropriate string values (e.g., Pending = 'PENDING').
+/*enum PaymentStatus {
+  Pending = 'PENDING',
+  Paid = 'PAID',
+  Failed = 'FAILED',
+  Refunded = 'REFUNDED',
+}
+
+ function logPaymentStatus(message: string, PaymentStatusValue: PaymentStatus) {
+  console.log(`[${message}] - ${PaymentStatusValue}`);
+ }
+
+ logPaymentStatus('The payment status is pending', PaymentStatus.Pending);
+logPaymentStatus('The payment was successful', PaymentStatus.Paid);
+
+//Create an `interface` for an `Order`. 
+//The order should have an `orderId` (number) and a `status` (of type `PaymentStatus`).*/  
+
+enum PaymentStatus {
+  Pending = 'PENDING',
+  Paid = 'PAID',
+  Failed = 'FAILED',
+  Refunded = 'REFUNDED',
+}
+
+interface Order {
+  orderId: number;
+  status: PaymentStatus;
+}
+
+//Create a variable of type `Order` 
+// and assign it a valid object, 
+// setting the status to `PaymentStatus.Paid`.  
+
+const myOrder: Order = {
+  orderId: 101,
+  status: PaymentStatus.Paid,
+};
+
+console.log(myOrder);
+
+
+//Create a type alias named `RgbColor` for a tuple that represents 
+// an RGB colour. 
+// It should be a fixed-length array of three numbers.  
+
+type RgbColor = [number, number, number];
+
+const myColor: RgbColor = [255, 128, 0];
+
+console.log(myColor);
+
+const backgroundColor: RgbColor = [255, 0, 128];
+console.log(backgroundColor);
+
+
+function toCssString(color: RgbColor): string {
+  return `rgb (${color[0]}, ${color[1]}, ${color[2]})`;
+}
+console.log(toCssString(myColor));
+console.log(toCssString(backgroundColor));

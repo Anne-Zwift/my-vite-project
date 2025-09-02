@@ -742,7 +742,7 @@ displayContentDetails(audiobook);*/
 
 //Exercise
 
-interface BlogPost {
+/*interface BlogPost {
   id: number;
   title: string;
   content: string;
@@ -791,4 +791,45 @@ const updatePayload: PostUpdatePayload = {
   publishedAt: new Date(),
 };
 console.log('\n---PostUpdatePayload---');
-console.log(updatePayload);
+console.log(updatePayload);*/
+
+
+
+//Advanced Object Destructuring
+
+const movie = {
+  id: 'm-001',
+  details: {
+    title: 'Inception',
+    director: {
+      name: 'Chris Nolan'
+    },
+  },
+  meta: {
+    rating: '8,8',
+    genres: ['Sci-Fi', 'Action', 'Thriller'],
+  },
+}
+
+const { details: {title: movieTitle} } = movie;
+console.log(`Nested and Renamed Destructuring: The movie title is "${movieTitle}"`);
+
+const {
+  details: {
+    director: { name: directorName },
+  },
+} = movie;
+
+console.log(directorName);
+
+const {
+  meta: {
+    genres: [primaryGenre]
+  }
+} = movie;
+
+console.log(`Nested Array Destructuring: The primary genre is "${primaryGenre}."`);
+
+
+const { releaseYear = 2010 } = movie;
+console.log(`Default Value: The movie's release year is ${releaseYear}`);

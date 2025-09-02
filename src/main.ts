@@ -671,7 +671,7 @@ console.log(toCssString(backgroundColor));*/
 
 //Audiobook: should have a kind property with the literal type "audiobook", a title (string), and a narrator (string).
 
-interface Movie {
+/*interface Movie {
   kind: "movie";
   title: string;
   duration: number;
@@ -732,4 +732,63 @@ console.log("Display details for a TV Show");
 displayContentDetails(tvShow);
 
 console.log("Display details for a audiobook");
-displayContentDetails(audiobook);
+displayContentDetails(audiobook);*/
+
+
+
+
+//Practical Utility Types
+// Partial, Required, Pick, and Omit
+
+//Exercise
+
+interface BlogPost {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  createdAt: Date;
+  publishedAt?: Date;
+}
+
+type BlogPostPreview = Pick<BlogPost, 'id' | 'title' | 'author'>;
+
+type NewPostData = Omit<BlogPost, 'id' | 'createdAt'>;
+
+type PublishedPost = Required<BlogPost>;
+
+type PostUpdatePayload = Partial<BlogPost>;
+
+
+const postPreview: BlogPostPreview = {
+  id: 123,
+  title: 'TypeScript',
+  author: 'Anne',
+};
+console.log('---BlogPostPreview---');
+console.log(postPreview);
+
+const newPost: NewPostData = {
+  title: 'The power of Utility Types',
+  content: 'Content types like Pick and Omit',
+  author: 'Jodi',
+};
+console.log('\n---NewPostData---');
+console.log(newPost);
+
+const publishedPost: PublishedPost = {
+  id: 456,
+  title: 'Utility Types',
+  content: 'Guide to types like Pick and Omit',
+  author: 'Jodi B',
+  createdAt: new Date('2025-09-2'),
+  publishedAt: new Date('2025-09-02'),
+};
+console.log('\n---PublishedPost---');
+console.log(publishedPost);
+
+const updatePayload: PostUpdatePayload = {
+  publishedAt: new Date(),
+};
+console.log('\n---PostUpdatePayload---');
+console.log(updatePayload);

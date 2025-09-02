@@ -527,12 +527,12 @@ interface Collection<T> {
   items: T[];  
 }
 
-type Movie = {
+/*type Movie = {
   title: string;
   year: number;
-}
+}*/
 
-const movieCollection: Collection<Movie> = {
+/*const movieCollection: Collection<Movie> = {
   name: 'My favorite movies',
   items: [
     { title: 'Alice in Wonderland', year: 1990 },
@@ -540,9 +540,9 @@ const movieCollection: Collection<Movie> = {
     { title: 'The man who knew Infinity', year: 2010 },
   ],
 
-};
+};*/
 
-console.log(movieCollection);
+//console.log(movieCollection);
 
 //Enums: Giving Names to Sets of Values
 //Numeric Enums
@@ -615,7 +615,7 @@ logPaymentStatus('The payment was successful', PaymentStatus.Paid);
 //Create an `interface` for an `Order`. 
 //The order should have an `orderId` (number) and a `status` (of type `PaymentStatus`).*/  
 
-enum PaymentStatus {
+/*enum PaymentStatus {
   Pending = 'PENDING',
   Paid = 'PAID',
   Failed = 'FAILED',
@@ -657,4 +657,79 @@ function toCssString(color: RgbColor): string {
   return `rgb (${color[0]}, ${color[1]}, ${color[2]})`;
 }
 console.log(toCssString(myColor));
-console.log(toCssString(backgroundColor));
+console.log(toCssString(backgroundColor));*/
+
+//The in Operator Guard
+
+
+
+// Exercise: Define three interfaces to represent different kinds of media content:
+
+//Movie: should have a kind property with the literal type "movie", a title (string), and a duration (number).
+
+//TVShow: should have a kind property with the literal type "tvshow", a title (string), a season (number), and an episode (number).
+
+//Audiobook: should have a kind property with the literal type "audiobook", a title (string), and a narrator (string).
+
+interface Movie {
+  kind: "movie";
+  title: string;
+  duration: number;
+}
+
+interface TvShow {
+  kind: "tvshow";
+  title: string;
+  season: number;
+  episode: number;
+}
+
+interface Audiobook {
+  kind: "audiobook";
+  title: string;
+  narrator: string;
+}
+
+type MediaContent = Movie | TvShow | Audiobook;
+
+function displayContentDetails(content: MediaContent) {
+  switch (content.kind) {
+    case "movie":
+      console.log(`Movie: "${content.title}" (${content.duration} mins)`);
+      break;
+    case "tvshow":
+      console.log(`TV Show: "${content.title}", Season ${content.season}, Episode ${content.episode}`);
+      break;
+    case "audiobook":
+      console.log(`Audiobook: "${content.title}", Narrated by ${content.narrator}`);
+      break;
+  }
+}
+
+const movie: Movie = {
+  kind: "movie",
+  title: "Inception",
+  duration: 148,
+};
+
+const tvShow: TvShow ={
+  kind: "tvshow",
+  title: "Breaking Bad",
+  season: 2,
+  episode: 3,
+};
+
+const audiobook: Audiobook = {
+  kind: "audiobook",
+  title: "Dune",
+  narrator: "Scott Brick",
+};
+
+console.log("Display details for a movie");
+displayContentDetails(movie);
+
+console.log("Display details for a TV Show");
+displayContentDetails(tvShow);
+
+console.log("Display details for a audiobook");
+displayContentDetails(audiobook);

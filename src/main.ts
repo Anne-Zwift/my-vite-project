@@ -875,10 +875,10 @@ console.log(fourth); // 40*/
 
 // Exercise: destructure array
 
-const cart = ['Promo FREE_SHIPPING', 'Laptop', 'Mouse', 'Keyboard'];
+//const cart = ['Promo FREE_SHIPPING', 'Laptop', 'Mouse', 'Keyboard'];
 
-const [PromotionalItem, mainProduct, ...accessories] = cart;
-console.log(accessories);//array of mouse and keyboard
+//const [PromotionalItem, mainProduct, ...accessories] = cart;
+//console.log(accessories);//array of mouse and keyboard
 
 //const [ , second] = cart;
 //console.log(second);
@@ -886,5 +886,58 @@ console.log(accessories);//array of mouse and keyboard
 //const [ , , third, fourth] = cart;
 //console.log([third, fourth]);
 
-const [, , , , discountCode = 'NO_DISCOUNT'] = cart;
-console.log(discountCode);
+//const [, , , , discountCode = 'NO_DISCOUNT'] = cart;
+//console.log(discountCode);
+
+
+
+// The Rest Operator
+
+/*function sum(...numbers) {
+  return numbers.reduce((total, current) => total + current, 0);
+}
+console.log(sum(8, 9));*/
+
+function logEntries(level, ...messages) {
+  const timestamp = new Date().toISOString();
+  for (const message of messages) {
+    console.log(`[${level.toLocaleUpperCase()}] ${timestamp}: ${message}`);
+  }
+}
+
+logEntries('info', 'User logged in.');
+
+
+//Exercise: rest in function parameters
+
+const mergeObjects = (...objs) => {
+  return Object.assign({}, ...objs);
+};
+
+const userProfile = {
+  id: 1,
+  username: "Zoe",
+  email: "zoe@example.com"
+};
+
+const userSettings = {
+  theme: "dark",
+  notifications: true,
+  email: "new.email@example.com" 
+}
+
+const userStatus = {
+  online: true,
+  lastLogin: new Date().toISOString(),
+  username: "ZoeFavDog" // This will overwrite the username from userProfile
+};
+
+const mergedResult = mergeObjects(userProfile, userSettings, userStatus);
+
+
+console.log("Original Objects:");
+console.log("  userProfile:", userProfile);
+console.log("  userSettings:", userSettings);
+console.log("  userStatus:", userStatus);
+console.log("\nMerged Object:");
+console.log(mergedResult);

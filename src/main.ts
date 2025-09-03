@@ -796,6 +796,7 @@ console.log(updatePayload);*/
 
 
 //Advanced Object Destructuring
+//destructuring statement that uses nesting, renaming, and default values to create specific variables
 
 const movie = {
   id: 'm-001',
@@ -833,3 +834,57 @@ console.log(`Nested Array Destructuring: The primary genre is "${primaryGenre}."
 
 const { releaseYear = 2010 } = movie;
 console.log(`Default Value: The movie's release year is ${releaseYear}`);
+
+
+// Skipping Elements
+
+/*const newNumbers = [10, 20, 30, 40, 50];
+
+// We want to get the first, third, and fifth elements.
+// We skip the second and fourth elements.
+const [first, , third, , fifth] = newNumbers;
+
+console.log(first); // 10
+console.log(third); // 30
+console.log(fifth); // 50
+
+//The Rest Operator in Array Destructuring
+
+const scores = [98, 85, 76, 65, 54];
+
+// Get the top score, and put the rest into a separate array.
+const [topScore, ...otherScores] = scores;
+
+console.log(topScore); // 98
+console.log(otherScores); // [85, 76, 65, 54]
+
+
+
+//Nested Array Destructuring
+
+const nestedData = [1, 2, [30, 40]];
+
+// Destructure the nested array.
+const [first, second, [third, fourth]] = nestedData;
+
+console.log(first); // 1
+console.log(second); // 2
+console.log(third); // 30
+console.log(fourth); // 40*/
+
+
+// Exercise: destructure array
+
+const cart = ['Promo FREE_SHIPPING', 'Laptop', 'Mouse', 'Keyboard'];
+
+const [PromotionalItem, mainProduct, ...accessories] = cart;
+console.log(accessories);//array of mouse and keyboard
+
+//const [ , second] = cart;
+//console.log(second);
+
+//const [ , , third, fourth] = cart;
+//console.log([third, fourth]);
+
+const [, , , , discountCode = 'NO_DISCOUNT'] = cart;
+console.log(discountCode);

@@ -941,3 +941,19 @@ console.log("  userSettings:", userSettings);
 console.log("  userStatus:", userStatus);
 console.log("\nMerged Object:");
 console.log(mergedResult);
+
+
+//Exercise: Part 2 (Rest in Object Destructuring)
+
+const product = {
+  id: 'prod-001',
+  name: 'Super Headphones',
+  price: 99.99,
+  _internalId: 'uuid-a1b2-c3d4',
+  _lastUpdated: '2023-10-27',
+};
+
+const {_internalId, _lastUpdated, ...publicProduct } = product;
+
+console.log("\nFiltered Product Object:");
+console.log(publicProduct);

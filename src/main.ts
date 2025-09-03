@@ -957,3 +957,62 @@ const {_internalId, _lastUpdated, ...publicProduct } = product;
 
 console.log("\nFiltered Product Object:");
 console.log(publicProduct);
+
+
+//Spread in Function Calls
+
+const newNumbers = [5, 10, 2, 8];
+const maxNumber = Math.max(...newNumbers);
+console.log(maxNumber);
+
+//Spread in Array Literals
+
+const fruits = ['apple', 'blueberry'];
+const vegetables = ['carrot', 'potato'];
+const food = [...fruits, ...vegetables];
+
+console.log(food);
+
+//Exercise: part 1 spreading arrays
+
+const listA = [1, 2, 3];
+
+const listB = [7, 8, 9];
+
+const combinedList = [...listA, 4, 5, 6, ...listB];
+
+console.log(combinedList);
+
+
+//Exercise: part 2 Spreading Objects
+
+const baseConfig = {
+  apiVersion: 'v1',
+  environment: 'development',
+};
+
+const userConfig = {
+  environment: 'production',
+  featureFlags: {
+    newDashboard: true,
+  },
+ };
+
+//const finalConfig = {...baseConfig, ...userConfig};
+
+//console.log(finalConfig);
+
+
+//Exercise: part 3 Shallow Copy Demonstration
+
+const finalConfig = {...baseConfig, ...userConfig};
+
+const configCopy = { ...finalConfig };
+
+configCopy.featureFlags.newDashboard = false;
+
+configCopy.apiVersion = 'v2';
+
+console.log(configCopy);
+console.log(finalConfig);
+

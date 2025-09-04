@@ -1113,7 +1113,7 @@ console.log('\nTransaction Summary:', transactionSummary);
 
 //Method chaining: array methods (`map`, `filter`, `slice`, etc.) 
 
-const numbers = [1, 2, 3, 4, 5, 6];
+/*const numbers = [1, 2, 3, 4, 5, 6];
 
 const result = numbers.filter((n) => n % 2 === 0).map((n) => n * n);
 
@@ -1139,5 +1139,37 @@ const totalPagesOfTopFantasyBooks = books
   .reduce((total, pages) => total + pages, 0);
 
   console.log("Books Data:", books);
-  console.log(totalPagesOfTopFantasyBooks);
+  console.log(totalPagesOfTopFantasyBooks);*/
 
+
+
+  //Conditional Checks with some(), every(), and includes()
+
+  //Exercise: some(), every(), and includes()
+
+  const students = [
+  { name: 'Alice', grade: 90, hasSubmitted: true },
+  { name: 'Bob', grade: 48, hasSubmitted: true },
+  { name: 'Charlie', grade: 75, hasSubmitted: false },
+  { name: 'David', grade: 82, hasSubmitted: true },
+];
+console.log(students);
+
+const hasFailedGrade = students.some((student) => student.grade < 50);
+
+if (hasFailedGrade) {
+  console.log('There is at least one student with a failing grade.');
+}
+
+const allSubmitted = students.every((student) => student.hasSubmitted === true);
+
+if (allSubmitted) {
+  console.log('All students has submitted their assignment.');
+} else {
+  console.log('At least one student failed submitting the assignment.')
+}
+
+const approvedUsernames = ['user123', 'admin_jane', 'dev_alex'];
+
+const isApproved = approvedUsernames.includes('dev_alex');
+console.log(isApproved);

@@ -509,7 +509,7 @@ function reverseArray<T>(items: T[]): T[] {
   return [...items].reverse();
 }
 
-const numbers = [1, 2, 3, 4, 5];
+/*const numbers = [1, 2, 3, 4, 5];
 const reverseNumbers = reverseArray(numbers);
 console.log('Original numbers array', numbers);
 console.log('Reversed numbers array', reverseNumbers);
@@ -517,7 +517,7 @@ console.log('Reversed numbers array', reverseNumbers);
 const strings = ['apple', 'banana', 'watermelon'];
 console.log('Original strings', strings);
 const reveredStrings = reverseArray(strings);
-console.log('Reversed strings', reveredStrings);
+console.log('Reversed strings', reveredStrings);*/
 
 
 // task 2: Create a generic interface named Collection.
@@ -1047,3 +1047,64 @@ newBlogPost.comments = [{ id: 'comment-3', text: 'Excellent point.' }];
 const nestedBlogPost = {...blogPost, ...newBlogPost};
 
 console.log(nestedBlogPost);*/
+
+
+// reduce()
+// reduce() callback function
+//accumulator acc, currentValue curr,
+
+const numbers = [1, 2, 3, 4, 5];
+
+const sum = numbers.reduce((accumulator, currentValue) => {
+  console.log(`Accumulator: ${accumulator}, Current Value; $${currentValue}`);
+  return accumulator + currentValue;
+}, 0);
+
+console.log('Final Sum:', sum);
+
+
+const cart = [
+  { id: 1, name: 'Laptop', price: 1200 },
+  { id: 2, name: 'Mouse', price: 100 },
+  { id: 3, name: 'Keyboard', price: 200 },
+];
+
+const totalCost = cart.reduce((total, item) => total + item.price, 0);
+console.log(totalCost);
+
+
+//Exercise:  reduce()
+
+const transactions = [
+  { type: 'income', amount: 1200 },
+  { type: 'expense', amount: 50 },
+  { type: 'expense', amount: 120 },
+  { type: 'income', amount: 300 },
+  { type: 'expense', amount: 80 },
+];
+
+const calculatedBalance = transactions.reduce((balance, transaction) => {
+  //check the type of the transaction
+  if (transaction.type === 'income') {
+    // If it's an income, add the amount to the balance
+    return balance + transaction.amount;
+  } else {
+    // If it's an expense, subtract the amount from the balance
+    return balance - transaction.amount;
+  }
+}, 0); // The '0' here is the initial value for the balance.
+
+console.log("Transactions:", transactions);
+console.log("\nFinal Balance:", calculatedBalance); // Expected output: 1250
+
+const transactionSummary = transactions.reduce((summary, transaction) => {
+  if (transaction.type === 'income') {
+    summary.totalIncome += transaction.amount;
+  } else if (transaction.type === 'expense') {
+    summary.totalExpense += transaction.amount;
+  }
+  return summary;
+}, { totalIncome: 0, totalExpense: 0});
+
+console.log('Transactions:', transactions);
+console.log('\nTransaction Summary:', transactionSummary);

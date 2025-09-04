@@ -1147,7 +1147,7 @@ const totalPagesOfTopFantasyBooks = books
 
   //Exercise: some(), every(), and includes()
 
-  const students = [
+  /*const students = [
   { name: 'Alice', grade: 90, hasSubmitted: true },
   { name: 'Bob', grade: 48, hasSubmitted: true },
   { name: 'Charlie', grade: 75, hasSubmitted: false },
@@ -1172,4 +1172,26 @@ if (allSubmitted) {
 const approvedUsernames = ['user123', 'admin_jane', 'dev_alex'];
 
 const isApproved = approvedUsernames.includes('dev_alex');
-console.log(isApproved);
+console.log(isApproved);*/
+
+
+
+//In-place Manipulation with sort() and splice()
+//Exercise
+
+let leaderboard = [
+  { name: 'Alice', score: 950 },
+  { name: 'Bob', score: 1200 },
+  { name: 'Charlie', score: 800 },
+  { name: 'David', score: 1100 },
+];
+
+leaderboard.sort((a, b) => b.score - a.score);
+console.log(leaderboard);
+
+const removePlayers = leaderboard.splice(2);
+console.log(removePlayers);
+console.log(leaderboard);
+
+const playerAdded = leaderboard.splice(1, 0, {name: 'Eve', score: 1000} );
+console.log(leaderboard);

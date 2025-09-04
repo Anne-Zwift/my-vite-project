@@ -1179,7 +1179,7 @@ console.log(isApproved);*/
 //In-place Manipulation with sort() and splice()
 //Exercise
 
-let leaderboard = [
+/*let leaderboard = [
   { name: 'Alice', score: 950 },
   { name: 'Bob', score: 1200 },
   { name: 'Charlie', score: 800 },
@@ -1194,4 +1194,28 @@ console.log(removePlayers);
 console.log(leaderboard);
 
 const playerAdded = leaderboard.splice(1, 0, {name: 'Eve', score: 1000} );
-console.log(leaderboard);
+console.log(leaderboard);*/
+
+
+//flatMap(), at(), and with()
+//Exercise
+
+const sentence = ['Hello world, how are you?', 'JavaScript is a fun language.'];
+
+const allWords = sentence.flatMap(word => word.split(''));
+console.log("Original Sentences:", sentence);
+console.log("\nFlat Array of All Words:", allWords);
+
+const history = ['home.html', 'products.html', 'cart.html', 'checkout.html'];
+
+const lastVisited = history.at(-1);
+console.log(lastVisited);
+
+const thirdToLast = history.at(-3);
+console.log(thirdToLast);
+
+const permissions = ['read', 'write', 'comment'];
+
+const newPermissions = permissions.with(2, 'delete');
+console.log("Original permissions:", permissions);
+console.log("New permissions:", newPermissions);

@@ -1016,3 +1016,34 @@ configCopy.apiVersion = 'v2';
 console.log(configCopy);
 console.log(finalConfig);
 
+//update a nested object and an array within it using immutable patterns
+
+const blogPost = {
+  id: 'post-1',
+  author: 'Author One',
+  content: 'This is a great post',
+  comments: [
+    { id: 'comment-1', text: 'I agree!' },
+    { id: 'comment-2', text: 'Thanks for sharing.'},
+  ],
+};
+
+const newBlogPost = {...blogPost, 
+  content: 'This is an amazing post.', 
+  comments: [...blogPost.comments, { id: 'comment-3', text: 'Excellent point.'}],
+};
+
+console.log("Original Blog Post (should be unchanged):");
+console.log(blogPost);
+console.log("\nNew Blog Post (with updates):");
+console.log(newBlogPost);
+
+/*newBlogPost.content = 'This is an amazing post.';
+console.log(newBlogPost);
+console.log(blogPost);
+
+newBlogPost.comments = [{ id: 'comment-3', text: 'Excellent point.' }];
+
+const nestedBlogPost = {...blogPost, ...newBlogPost};
+
+console.log(nestedBlogPost);*/

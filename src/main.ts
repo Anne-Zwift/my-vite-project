@@ -1053,7 +1053,7 @@ console.log(nestedBlogPost);*/
 // reduce() callback function
 //accumulator acc, currentValue curr,
 
-const numbers = [1, 2, 3, 4, 5];
+/*const numbers = [1, 2, 3, 4, 5];
 
 const sum = numbers.reduce((accumulator, currentValue) => {
   console.log(`Accumulator: ${accumulator}, Current Value; $${currentValue}`);
@@ -1070,7 +1070,7 @@ const cart = [
 ];
 
 const totalCost = cart.reduce((total, item) => total + item.price, 0);
-console.log(totalCost);
+console.log(totalCost);*/
 
 
 //Exercise:  reduce()
@@ -1108,3 +1108,36 @@ const transactionSummary = transactions.reduce((summary, transaction) => {
 
 console.log('Transactions:', transactions);
 console.log('\nTransaction Summary:', transactionSummary);
+
+
+
+//Method chaining: array methods (`map`, `filter`, `slice`, etc.) 
+
+const numbers = [1, 2, 3, 4, 5, 6];
+
+const result = numbers.filter((n) => n % 2 === 0).map((n) => n * n);
+
+console.log(result);
+
+//Exercise: chaining 
+
+const books = [
+  { title: 'The Hobbit', genre: 'Fantasy', pages: 310, rating: 4.8 },
+  { title: 'A Game of Thrones', genre: 'Fantasy', pages: 694, rating: 4.4 },
+  { title: 'Dune', genre: 'Sci-Fi', pages: 412, rating: 4.9 },
+  { title: 'The Way of Kings', genre: 'Fantasy', pages: 1007, rating: 4.9 },
+  { title: '1984', genre: 'Dystopian', pages: 328, rating: 4.7 },
+];
+
+
+const totalPagesOfTopFantasyBooks = books
+  // Step 1: Filter the array to get only the fantasy books with a rating of 4.5 or greater.
+  .filter(book => book.genre === 'Fantasy' && book.rating >= 4.5)
+  // Step 2: Map the filtered books to an array containing only their page counts.
+  .map(book => book.pages)
+  // Step 3: Reduce the array of page counts to a single sum.
+  .reduce((total, pages) => total + pages, 0);
+
+  console.log("Books Data:", books);
+  console.log(totalPagesOfTopFantasyBooks);
+
